@@ -34,6 +34,6 @@ modules:
     inputs:
       - source: solana:blocks_without_votes
     output:
-      type: proto:mydata.v1.MyData
+      type: proto:mydata.v1.PriceUpdate
 
 network: solana-mainnet-beta

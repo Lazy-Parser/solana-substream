@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "github.com/my‑org/my‑app/proto/pb;pb";
+option go_package = "github.com/Lazy-Parser/solana-substream/proto/pb/proto";
 package mydata.v1;
 
 message PriceUpdate {

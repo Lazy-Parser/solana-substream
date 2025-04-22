@@ -1,8 +1,26 @@
 version: v1
+
 plugins:
   - name: go
     out: proto/pb
-    opt: paths=source_relative
+    opt:
+      - paths=source_relative
+      # все строки ниже — одна «опт»‑секция, каждую начинайте с «‑ »
+      # ⬇︎ говорим генератору: «если встретишь этот .proto,
+      #    клади код в пакет github.com/streamingfast/substreams‑solana/pb»
+      - Msf/substreams/solana/v1/transactions.proto=github.com/streamingfast/substreams-solana/pb
+      - Msf/substreams/solana/v1/instructions.proto=github.com/streamingfast/substreams-solana/pb
+
+
+
+# version: v1
+# plugins:
+#   - name: go
+#     out: proto/pb
+#     opt: paths=source_relative
+#     except:
+#       - sf/**/*.proto
+#       - google/**/*.proto
 
 # - plugin: buf.build/community/neoeinstein-prost:v0.4.0
 #   out: src/pb
