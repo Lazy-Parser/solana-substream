@@ -12,8 +12,8 @@ mod mydata {
 }
 
 // MINT адреса
-const TRUMP_MINT: &str = "47Y6gNzZ2FZgdkw9VGuPHRikQojrTn9zoPqsMsQwPnnR";
-const USDT_MINT: &str = "Es9vMFrzaCERxVbDSb8wMNiNnp8xpEo1Y8DQ2ozf3xvv";
+const TRUMP_MINT: &str = "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN";
+const USDT_MINT: &str = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB";
 const TOKEN_PROGRAM_ID: &str = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
 
 // Парсим volume из данных transfer инструкции

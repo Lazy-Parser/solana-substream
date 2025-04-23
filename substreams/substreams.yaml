@@ -30,7 +30,7 @@ binaries:
 modules:
   - name: map_my_data
     kind: map
-    initialBlock: 18000000
+    initialBlock: 335370000
     inputs:
       - source: solana:blocks_without_votes
     output:

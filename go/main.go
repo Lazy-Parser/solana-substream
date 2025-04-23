@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
@@ -53,13 +54,15 @@ func main() {
 func runSink(cmd *cobra.Command, args []string) error {
 	endpoint, spkgPath, moduleName := args[0], args[1], args[2]
 
+	fmt.Println(expectedOutputType)
+
 	sinker, err := sink.NewFromViper(
 		cmd,
 		expectedOutputType,
 		endpoint,
 		spkgPath,
 		moduleName,
-		"19000000:19200000", // от start_block и «вперёд навсегда»
+		"335420000:", // от start_block и «вперёд навсегда»
 		zlog,
 		tracer,
 	)
@@ -70,6 +73,12 @@ func runSink(cmd *cobra.Command, args []string) error {
 	defer cancel()
 
 	cursor := sink.NewBlankCursor() // TODO: подставьте восстановление курсора
+
+	sinker.OnTerminating(func(err error) {
+		cli.NoError(err, "unexpected sinker error")
+
+		zlog.Info("sink is terminating")
+	})
 
 	// запускаем и ждём завершения
 	sinker.Run(ctx, cursor, sink.NewSinkerHandlers(onData, onUndo))
